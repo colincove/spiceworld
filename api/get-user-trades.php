@@ -1,0 +1,1 @@
+<?php echo "Hello from Spice World get user trades API!"; ?>
