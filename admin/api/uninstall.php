@@ -1,0 +1,1 @@
+<?php echo "ADMIN Hello from Spice World uninstall API!"; ?>
