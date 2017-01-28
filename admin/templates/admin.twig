@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<script>
+			var plugin_uri = "{{plugins}}";
+			var site_uri = "{{site.url}}";
+		</script>
+		<script src="{{plugins}}js/jquery-1.10.2.min.js" ></script>
+		<script src="{{plugins}}js/script.js" ></script>
+		<link rel="stylesheet" href="{{plugins}}../css/all.css" />
+	</head>
+	<body class="flex-row">
+		<div class="col-1of3">
+			<h1>Database</h1>
+			<button id="install-btn">Install</button>
+			<button id="uninstall-btn">Uninstall</button>
+			<h1>Data</h1>
+			<h2>Trade Statuses</h2>
+			<form id="StatusForm">
+				<h3>Name</h3>
+				<input type="text" name="name"><br>
+				<input type="submit" name="lastname" value="Create New">
+			</form>
+			<ol>
+			</ol>
+		</div>
+		<div class="col-1of3">
+			<h1>User</h1>
+		</div>
+		<div class="col-1of3">
+			<h1>Trades</h1>
+		</div>
+	</body>
+</html>

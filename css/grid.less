@@ -1,0 +1,101 @@
+.row, .flex-row{
+	overflow:hidden;
+	[class*='col-']{
+		box-sizing: border-box;
+	}
+	img[class*='col-'], a img[class*='col-']{
+		height: auto;
+	}
+	.generate-columns(@padding: 0, @margin: 0, @columns: 1, @j:1) when (@j<=@columns){
+		.col-@{j}of@{columns}.padded{
+			padding: @padding;
+		}
+		.col-@{j}of@{columns}.margined{
+			margin: @margin / 2;
+		}
+		.generate-columns(@padding, @margin, @columns, (@j+1));
+	}
+	.generate-grid(@padding: 0, @margin: 0, @grid: 1, @i:0) when (@i+1<=@grid){
+		.generate-columns(@padding, @margin, @i+1);
+		.generate-grid(@padding, @margin, @grid, (@i+1));
+	}
+	.generate-grid(@layoutUnit5, @layoutUnit4, 7);
+}
+.row {
+	[class*='col-']{
+		float: left;
+	}
+	.generate-columns(@padding: 0, @margin: 0, @columns: 1, @j:1) when (@j<=@columns){
+		.col-@{j}of@{columns}{
+			width: (@j / @columns * 100%);
+		}
+		.col-@{j}of@{columns}.padded{
+			width: calc((@j / @columns * 100%) ~" - " @padding);
+		}
+		.col-@{j}of@{columns}.margined{
+			width: calc((@j / @columns * 100%) ~" - " @margin);
+		}
+		.col-@{j}of@{columns}.margined.padded{
+			width: calc((@j / @columns * 100%) ~" - " (@margin+@padding));
+		}
+		@media (max-width: 640px){
+			.col-@{j}of@{columns}{
+				width:100%;
+			}
+			.col-@{j}of@{columns}.padded{
+				width: calc(100% ~" - " @padding);
+			}
+			.col-@{j}of@{columns}.margined{
+				width: calc(100% ~" - " @margin);
+			}
+			.col-@{j}of@{columns}.margined.padded{
+				width: calc(100% ~" - " (@margin+@padding));
+			}
+		}
+		.generate-columns(@padding, @margin, @columns, (@j+1));
+	}
+	.generate-grid(@padding: 0, @margin: 0, @grid: 1, @i:0) when (@i+1<=@grid){
+		.generate-columns(@padding, @margin, @i+1);
+		.generate-grid(@padding, @margin, @grid, (@i+1));
+	}
+	.generate-grid(@layoutUnit5, @layoutUnit4, 7);
+}
+
+.flex-row {
+	display: flex;
+	flex-flow: wrap;
+	.generate-columns(@padding: 0, @margin: 0, @columns: 1, @j:1) when (@j<=@columns){
+		.col-@{j}of@{columns}{
+			flex-basis: (@j / @columns * 100%);
+		}
+		.col-@{j}of@{columns}.padded{
+			flex-basis: calc((@j / @columns * 100%) ~" - " @padding);
+		}
+		.col-@{j}of@{columns}.margined{
+			flex-basis: calc((@j / @columns * 100%) ~" - " @margin);
+		}
+		.col-@{j}of@{columns}.margined.padded{
+			flex-basis: calc((@j / @columns * 100%) ~" - " (@margin+@padding));
+		}
+		@media (max-width: 640px){
+			.col-@{j}of@{columns}{
+				flex-basis:100%;
+			}
+			.col-@{j}of@{columns}.padded{
+				flex-basis: calc(100% ~" - " @padding);
+			}
+			.col-@{j}of@{columns}.margined{
+				flex-basis: calc(100% ~" - " @margin);
+			}
+			.col-@{j}of@{columns}.margined.padded{
+				flex-basis: calc(100% ~" - " (@margin+@padding));
+			}
+		}
+		.generate-columns(@padding, @margin, @columns, (@j+1));
+	}
+	.generate-grid(@padding: 0, @margin: 0, @grid: 1, @i:0) when (@i+1<=@grid){
+		.generate-columns(@padding, @margin, @i+1);
+		.generate-grid(@padding, @margin, @grid, (@i+1));
+	}
+	.generate-grid(@layoutUnit5, @layoutUnit4, 7);
+}
