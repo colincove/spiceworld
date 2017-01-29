@@ -5,29 +5,79 @@
 			var site_uri = "{{site.url}}";
 		</script>
 		<script src="{{plugins}}js/jquery-1.10.2.min.js" ></script>
-		<script src="{{plugins}}js/script.js" ></script>
+		<script src="{{plugins}}../js/api.js" ></script>
+		<script src="{{plugins}}/js/script.js" ></script>
 		<link rel="stylesheet" href="{{plugins}}../css/all.css" />
+		<link rel="stylesheet" href="{{plugins}}/css/style.css" />
 	</head>
 	<body class="flex-row">
-		<div class="col-1of3">
+		<section class="col-1of3">
 			<h1>Database</h1>
 			<button id="install-btn">Install</button>
 			<button id="uninstall-btn">Uninstall</button>
 			<h1>Data</h1>
 			<h2>Trade Statuses</h2>
 			<form id="StatusForm">
-				<h3>Name</h3>
+				<h5>Name</h5>
 				<input type="text" name="name"><br>
-				<input type="submit" name="lastname" value="Create New">
+				<input type="submit" value="Create New">
 			</form>
-			<ol>
+			<h4>Trade Status List</h4>
+			<ol id="TradeStatusList">
 			</ol>
-		</div>
-		<div class="col-1of3">
+			<h2>Items</h2>
+			<form id="NewItemForm">
+				<h5>Name</h5>
+				<input type="text" name="name"><br>
+				<h5>Value</h5>
+				<input type="text" name="value"><br>
+				<input type="submit" value="Create New">
+			</form>
+			<h4>Item List</h4>
+			<ol id="ItemsList">
+			</ol>
+		</section>
+		<section class="col-1of3">
 			<h1>User</h1>
-		</div>
-		<div class="col-1of3">
+			<ul id="UserList"></ul>
+			<h2>Grant Item</h2>
+			<form id="GrantItem">
+				<h5>Item</h5>
+				<select class="itemDropDown" name="item">
+				</select>
+				<input type="submit" value="Grant">
+			</form>
+			<h2>User Inventory</h2>
+			<ul id="UserInventory"></ul>
+			<h2>User Trades</h2>
+			<ul id="UserTrades"></ul>
+		</section>
+		<section class="col-1of3">
 			<h1>Trades</h1>
-		</div>
+			<button id="MakeTrade">Make Trade</button>
+			<h2>Users</h2>
+			<form id="CreateTrade">
+				<h5>Offer</h5>
+				<select id="offerUserList" class="userList" name="owner">
+				</select>
+				<h5>Target</h5>
+				<select id="targetUserList" class="userList" name="target">
+				</select>
+			</form>
+			<h2>Offer Items</h2>
+			<form id="OfferItems">
+				<select class="inventoryList" name="item">
+				</select>
+				<input type="submit" value="Add">
+			</form>
+			<ul id="OfferList"></ul>
+			<h2>Request Items</h2>
+			<form id="RequestItems">
+				<select class="inventoryList" name="item">
+				</select>
+				<input type="submit" value="Add">
+			</form>
+			<ul id="RequestList"></ul>
+		</section>
 	</body>
 </html>

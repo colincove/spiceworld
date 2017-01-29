@@ -3,13 +3,13 @@
 define( 'MY_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 
 require_once( MY_PLUGIN_PATH . 'admin/table_definitions.php');
-require_once( MY_PLUGIN_PATH . 'admin/utils.php');
 
 global $wpdb;
 
 // Query
-$sql = sprintf("SELECT $id, user_nicename FROM $users");
+$sql = sprintf("DELETE FROM $inventory WHERE $id = %s", 
+			  mysql_real_escape_string($_POST['id']));
 
-echo json_encode($wpdb->get_results($sql));
+$wpdb->query($sql);
 
 ?>

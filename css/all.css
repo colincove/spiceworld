@@ -1828,3 +1828,6 @@ table {
     flex-basis: calc(100%  -  1.5rem);
   }
 }
+body.flex-row {
+  overflow-y: scroll;
+}

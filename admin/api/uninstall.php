@@ -13,3 +13,4 @@ foreach ($tables as $table => $value)
 echo "Uninstall Success";
 
 ?>
+

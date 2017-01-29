@@ -36,6 +36,7 @@ $target = "target";
 $message = "message";
 $date = "date";
 $last_updated = "last_updated";
+$trade_id="trade_id";
 
 /* Items */
 
@@ -109,8 +110,10 @@ $tables[$trades_content][$rows][$id] = array();
 $tables[$trades_content][$rows][$id][$constraints] = array("bigint(20)", "NOT NULL", "AUTO_INCREMENT");
 $tables[$trades_content][$rows][$item] = array();
 $tables[$trades_content][$rows][$item][$constraints] = array("bigint(20)", "NOT NULL");
+$tables[$trades_content][$rows][$trade_id] = array();
+$tables[$trades_content][$rows][$trade_id][$constraints] = array("bigint(20)", "NOT NULL");
 
 $tables[$trades_content][$primary_key] = $id;
-$tables[$trades_content][$foreign_keys] = array("($item)" => "$inventory ($id)");
+$tables[$trades_content][$foreign_keys] = array("($item)" => "$inventory ($id)", "($trade_id)" => "$trades ($id)");
 
 ?>
