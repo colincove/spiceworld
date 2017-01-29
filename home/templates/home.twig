@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<script>
+			var plugin_uri = "{{plugins}}";
+			var site_uri = "{{site.url}}";
+			var currentUserId = "{{fn('get_current_user_id')}}";
+			var loc = {{loc}};
+		</script>
+		<script src="{{plugins}}../admin/js/jquery-1.10.2.min.js" ></script>
+		<script src="{{plugins}}../js/api.js" ></script>
+		
+		<link rel="stylesheet" href="{{plugins}}../css/all.css" />
+		<link rel="stylesheet" href="{{plugins}}../css/dragula.min.css" />
+		
+	</head>
+	<body class="flex-row">
+		<script src="{{plugins}}../js/dragula.min.js"></script>
+		<script src="{{plugins}}../js/script.js" ></script>
+		{% set vars = {'sectionId': 'User'} %}
+		{% include ['templates/user_section.twig'] with vars %}
+		<section id="Trade" class="col-2of7 margined trade-section">
+			<header>
+			</header>
+			<button id="TradeButton">Send Trade</button>
+			<ul class="inventory trades">
+			</ul>
+		</section>
+		{% set vars = {'sectionId': 'Friend'} %}
+		{% include ['templates/user_section.twig'] with vars %}
+		<section id="Friends" class="col-1of7 margined">
+		</section>
+	</body>
+</html>

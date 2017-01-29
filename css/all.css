@@ -1828,6 +1828,66 @@ table {
     flex-basis: calc(100%  -  1.5rem);
   }
 }
-body.flex-row {
+.list-scroll {
   overflow-y: scroll;
+}
+.list-scroll::-webkit-scrollbar {
+  display: none;
+}
+body {
+  overflow-y: scroll;
+}
+body section,
+body div,
+body header,
+body li,
+body ul {
+  box-sizing: border-box;
+  border: 1px solid black;
+}
+body section.trade-section {
+  display: flex;
+  flex-direction: column;
+}
+body section.trade-section header,
+body section.trade-section #TradeButton,
+body section.trade-section .table {
+  height: 7rem;
+  margin-bottom: 2rem;
+}
+body section.trade-section .inventory {
+  flex: 1;
+  overflow-y: scroll;
+}
+body section.trade-section .inventory::-webkit-scrollbar {
+  display: none;
+}
+body section.trade-section .table {
+  overflow-y: scroll;
+}
+body section.trade-section .table::-webkit-scrollbar {
+  display: none;
+}
+#Trade {
+  position: relative;
+}
+#TradeButton {
+  border-radius: 1.5rem;
+  width: 100%;
+}
+body.admin {
+  background-color: dimgray;
+}
+body.admin > section {
+  background-color: #fbfbfb;
+  border-radius: 1em;
+  padding: 1em;
+  margin: 1em;
+  box-sizing: border-box;
+}
+body.admin h1 {
+  font-size: 3em;
+}
+body.admin h2 {
+  font-size: 1.5em;
 }

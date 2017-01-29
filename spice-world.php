@@ -14,4 +14,7 @@ Author URI: http://coveportfolio.com
 
 include_once( plugin_dir_path( __FILE__ ) . 'redirects.php' );
 
+
+
+
 ?>

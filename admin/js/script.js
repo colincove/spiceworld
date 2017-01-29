@@ -89,8 +89,7 @@ window.onload  =function()
 				var $option = $("<option>");
 				
 				$option.attr("value", item["ID"]);
-				$option.text(item["name"]);
-				
+				$option.text(loc['spices'][item['item']]);
 				$options.append($option);
 			});
 		});
@@ -108,7 +107,7 @@ window.onload  =function()
 				var $option = $("<option>");
 				
 				$option.attr("value", item["ID"]);
-				$option.text(item["name"]);
+				$option.text(loc["spices"][item['item']]);
 				
 				$options.append($option);
 			});
@@ -236,7 +235,7 @@ window.onload  =function()
 			var $itemDropDown = $(".itemDropDown");
 			
 			json.forEach(function(item, i){
-				var $option = $("<option>").text(item['name']).attr("value", item['ID']);
+				var $option = $("<option>").text(loc['spices'][item['ID']]).attr("value", item['ID']);
 				$itemDropDown.append($option);
 			}, this);
 			

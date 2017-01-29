@@ -2,3 +2,21 @@
 body {
   overflow-y: scroll;
 }
+body section,
+body div,
+body header,
+body li,
+body ul {
+  box-sizing: border-box;
+  border: 1px solid black;
+}
+body section.user-section {
+  display: flex;
+  flex-direction: column;
+}
+body section.user-section header {
+  min-height: 3em;
+}
+body section.user-section .inventory {
+  flex: 1;
+}

@@ -1,3 +1,46 @@
+@headHeight: 7rem;
+
+.list-scroll{
+	overflow-y: scroll;
+	&::-webkit-scrollbar { 
+		display: none;  // Safari and Chrome
+	}
+}
+
 body{
 	overflow-y: scroll;
+	section, div, header, li, ul{
+		box-sizing: border-box;
+		border: 1px solid black;
+	}
+	
+	section.user-section{
+		
+	}
+	section.trade-section{
+		display: flex;
+		flex-direction: column;
+		
+		header, #TradeButton, .table{
+			height:@headHeight;
+			margin-bottom: @layoutUnitStandard;
+		}
+		.inventory{
+			flex:1;
+			overflow-y:scroll;
+			.list-scroll;
+		}
+		.table{
+			.list-scroll;
+		}
+	}
+}
+
+#Trade{
+	position: relative;
+}
+
+#TradeButton{
+	border-radius: 1.5rem;
+	width: 100%;
 }
