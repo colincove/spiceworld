@@ -4,6 +4,8 @@ window.onload  =function(){
 	/*-------------Drag amd Drop-----------*/
 	/*-------------------------------------*/
 	
+	window.addEventListener( 'touchmove', function() {})
+	
 	var containers = [document.querySelector('#User .inventory'), document.querySelector('#Friend .inventory'), document.querySelector(' #User .table'), document.querySelector('#Friend .table')];
 	var userColumn = $("#User").get(0);
 	var friendColumn = $("#Friend").get(0);

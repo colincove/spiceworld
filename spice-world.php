@@ -11,10 +11,7 @@ Author: Colin Cove
 Version: 0.1
 Author URI: http://coveportfolio.com
 */
-
+define( 'MY_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+include_once( plugin_dir_path( __FILE__ ) . 'config.php' );
 include_once( plugin_dir_path( __FILE__ ) . 'redirects.php' );
-
-
-
-
 ?>

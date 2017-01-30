@@ -6,7 +6,7 @@ $tables = array();
 $constraints = "contraints";
 $defs = "defs";
 $primary_key = "primary_key";
-$foreign_key = "foreign_key";
+$foreign_keys = "foreign_keys";
 $rows = "rows";
 
 /********************************************************************/
@@ -18,7 +18,7 @@ $prefix = "spiceworld_";
 /**********************	      ITEMS  		*************************/
 
 //Table Names
-$users = "wp_users";
+$users = WP_DB_PREPEND."_users";
 $items = $prefix."items";
 $trades_states = $prefix."trades_states";
 $trades_content = $prefix."trades_content";

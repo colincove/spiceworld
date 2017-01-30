@@ -1845,7 +1845,7 @@ table {
 body {
   display: flex;
   font-family: SpiceFamily;
-  overflow-y: scroll;
+  overflow-y: scroll !important;
 }
 body #MainContainer {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#c5ad87+0,e6ca9d+50,c5ad87+100 */

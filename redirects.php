@@ -1,6 +1,6 @@
 <?php
 
-define( 'MY_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+
 include( MY_PLUGIN_PATH . 'redirects-config.php');
 
 add_action( 'init', 'spiceworld_init_internal' );

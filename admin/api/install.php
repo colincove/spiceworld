@@ -16,7 +16,7 @@ You must specify the length of all fields that accept a length parameter. int(11
 
 require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 
-define( 'MY_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+
 include( MY_PLUGIN_PATH . 'admin/table_definitions.php');
 
 global $wpdb;
