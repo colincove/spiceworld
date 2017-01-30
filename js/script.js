@@ -21,6 +21,7 @@ window.onload  =function(){
 	  invalid: function (el, handle) {
 		return false; // don't prevent any drags from initiating by default
 	  },
+		
 	  direction: 'vertical',             // Y axis is considered when determining where an element would be dropped
 	  copy: false,                       // elements are moved by default, not copied
 	  copySortSource: false,             // elements in copy-source containers can be reordered
@@ -28,7 +29,8 @@ window.onload  =function(){
 	  removeOnSpill: false,              // spilling will `.remove` the element, if this is true
 	  mirrorContainer: document.body,    // set the element that gets mirror elements appended
 	  ignoreInputTextSelection: true     // allows users to select input text, see details below
-	});
+	}).on("drop", checkDrop);
+	checkDrop();
 	
 	/*-------------------------------------*/
 	/*-------------Variables---------------*/
@@ -44,14 +46,14 @@ window.onload  =function(){
 	/*-------------------------------------*/
 	
 	getUsers().done(function(){
-		getUserTrades(currentUserId, $("#Trade .trades"));
+		getUserTrades(currentUserId, $("#Trades"));
 		getUserInventory(currentUserId, $('#User .inventory'));
 	});
 	
 	setInterval(refreshTrades, 5000);
 	
 	function refreshTrades(){
-		getUserTrades(currentUserId, $("#Trade .trades"));
+		getUserTrades(currentUserId, $("#Trades"));
 	}
 	
 	/*-------------------------------------*/
@@ -104,24 +106,20 @@ window.onload  =function(){
 				}
 			}
 			
-			$('#User header img').attr("src", SpiceWorld.prepend+"/img/"+userNames[currentUserId]+".png");
+			$('#User header img').attr("src", plugin_uri+"/img/"+userNames[currentUserId]+".png");
 			$('#User header span').text(userNames[currentUserId]);
 			
 			//clear list
 			$list.empty();
 			
-			//auto select first user in list
-			if(json.length > 0)
-			{
-				selectFriend(json[0]['ID']);
-			}
+			
 			
 			json.forEach(function(item, i){
 				var $li = $("<li>");
 				$list.append($li);
 				
-				$li.append($("<span>").text(item["user_nicename"]));
-				
+				$li.append($("<img>").attr("src", plugin_uri+"/img/"+item["user_nicename"]+".png"));
+								
 				//set data
 				jQuery.data($li.get(0), "ID", item['ID']);
 				
@@ -132,6 +130,12 @@ window.onload  =function(){
 				});
 				
 			});
+			//auto select first user in list
+			if(json.length > 0)
+			{
+				selectFriend(json[0]['ID']);
+				$("#Friends li").eq(0).addClass("active");
+			}
 		});
 	}
 	
@@ -141,7 +145,7 @@ window.onload  =function(){
 		
 		$('#Friend .table').empty();
 		
-		$('#Friend header img').attr("src", SpiceWorld.prepend+"/img/"+userNames[id]+".png");
+		$('#Friend header img').attr("src", plugin_uri+"/img/"+userNames[id]+".png");
 		$('#Friend header span').text(userNames[id]);
 		
 		getUserInventory(id, $("#Friend .inventory"));
@@ -155,7 +159,7 @@ window.onload  =function(){
 			$container.empty();
 			
 			json.forEach(function(item, i){
-				var $li = $("<li>");
+				var $li = $("<li>").addClass("trade");
 				$container.append($li);
 				var $btn = $("<button>").text("Accept").click(function(){
 						acceptTrade(jQuery.data(this, "ID"), jQuery.data(this, "owner"), jQuery.data(this, "target"));
@@ -173,7 +177,7 @@ window.onload  =function(){
 	function acceptTrade( id ,offerUserId, requestUserId)
 	{
 		return SpiceWorld.acceptTrade(id, offerUserId, requestUserId).done(function(){
-			getUserTrades(currentUserId, $("#Trade .trades"));
+			getUserTrades(currentUserId, $("#Trades"));
 			reset_inventories();
 		});
 	}
@@ -186,18 +190,25 @@ window.onload  =function(){
 			$container.empty();
 			
 			json.forEach(function(item, i){
-				var $li = $("<li>");
+				var $li = $("<li>").addClass("inventory-item");
 				$container.append($li);
 
 				jQuery.data($li.get(0), "ID", item['ID']);
 				
 				$li.append($("<h1>").text(loc[item['ID']]));
 				$li.append($("<span>").text(loc['spices'][item['item']]));
-				$li.append($("<img>").attr("src", SpiceWorld.prepend+"/img/spice_"+item["item"]+".png"));
+				$li.append($("<img>").attr("src", plugin_uri+"img/spice_"+item["item"]+".png"));
 				
 				$li.fadeIn("slow");
 			
 			}, this);
 		});
+	}
+	function checkDrop(){
+		
+		var $offer = $("#User .table li");
+		var $request = $("#Friend .table li");
+
+		$("#TradeButton").toggleClass("disabled", $offer.length ===0 || $request.length === 0);
 	}
 };

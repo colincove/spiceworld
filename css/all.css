@@ -127,6 +127,14 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+@font-face {
+  font-family: SpiceFamily;
+  src: url(../font/TF2.ttf);
+}
+@font-face {
+  font-family: SpiceFamilySecondary;
+  src: url(../font/TF2secondary.ttf);
+}
 .row,
 .flex-row {
   overflow: hidden;
@@ -1835,15 +1843,23 @@ table {
   display: none;
 }
 body {
+  display: flex;
+  font-family: SpiceFamily;
   overflow-y: scroll;
 }
-body section,
-body div,
-body header,
-body li,
-body ul {
-  box-sizing: border-box;
-  border: 1px solid black;
+body #MainContainer {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#c5ad87+0,e6ca9d+50,c5ad87+100 */
+  background: #c5ad87;
+  /* Old browsers */
+  background: -moz-linear-gradient(left, #c5ad87 0%, #e6ca9d 50%, #c5ad87 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #c5ad87 0%, #e6ca9d 50%, #c5ad87 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #c5ad87 0%, #e6ca9d 50%, #c5ad87 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c5ad87', endColorstr='#c5ad87', GradientType=0);
+  /* IE6-9 */
+  flex: 1;
 }
 body section.trade-section {
   display: flex;
@@ -1854,6 +1870,12 @@ body section.trade-section #TradeButton,
 body section.trade-section .table {
   height: 7rem;
   margin-bottom: 2rem;
+}
+body section.trade-section header img {
+  height: 100%;
+  -webkit-box-shadow: 0px 7px 8px 0px rgba(38, 26, 16, 0.4);
+  -moz-box-shadow: 0px 7px 8px 0px rgba(38, 26, 16, 0.4);
+  box-shadow: 0px 7px 8px 0px rgba(38, 26, 16, 0.4);
 }
 body section.trade-section .inventory {
   flex: 1;
@@ -1868,12 +1890,95 @@ body section.trade-section .table {
 body section.trade-section .table::-webkit-scrollbar {
   display: none;
 }
+.inventory,
+.table {
+  position: relative;
+  border-top: 0.3em solid #261a10;
+  background-color: #725e3f;
+  list-style-type: none !important;
+}
 #Trade {
   position: relative;
 }
 #TradeButton {
   border-radius: 1.5rem;
   width: 100%;
+}
+#Friends {
+  width: 4em;
+  background-color: #f1dbb7;
+}
+#Friends li {
+  cursor: pointer;
+  padding: 0.5rem;
+}
+#Friends li img {
+  width: 100%;
+  -webkit-box-shadow: 0px 3px 5px 0px rgba(38, 26, 16, 0.4);
+  -moz-box-shadow: 0px 3px 5px 0px rgba(38, 26, 16, 0.4);
+  box-shadow: 0px 3px 5px 0px rgba(38, 26, 16, 0.4);
+}
+#Friends li.active {
+  background-color: #fceec7;
+  cursor: default;
+}
+li.inventory-item,
+li.trade {
+  overflow: hidden;
+  cursor: default;
+  border: 2px solid #725e3f;
+  padding: 0.5rem;
+  background-color: #f1dbb7;
+  list-style-type: none !important;
+}
+li.inventory-item button,
+li.trade button {
+  float: right;
+}
+li.inventory-item img,
+li.trade img {
+  height: 100%;
+  float: right;
+}
+li.inventory-item {
+  height: 4em;
+  cursor: move;
+}
+button {
+  padding: 0.5rem;
+  cursor: pointer;
+  font-family: inherit;
+  color: inherit;
+  border: none;
+  -webkit-box-shadow: 0px 3px 6px 0px rgba(38, 26, 16, 0.4);
+  -moz-box-shadow: 0px 3px 6px 0px rgba(38, 26, 16, 0.4);
+  box-shadow: 0px 3px 6px 0px rgba(38, 26, 16, 0.4);
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fceec7+0,e3c79b+100 */
+  background: #fceec7;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #fceec7 0%, #e3c79b 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #fceec7 0%, #e3c79b 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #fceec7 0%, #e3c79b 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fceec7', endColorstr='#e3c79b', GradientType=0);
+  /* IE6-9 */
+}
+button:active {
+  background: #fceec7;
+}
+button.disabled,
+buttondisabled:active {
+  cursor: default;
+  background: #e3c79b;
+  color: #725e3f;
+}
+#TradeButton {
+  -webkit-box-shadow: 0px 10px 22px 0px rgba(38, 26, 16, 0.4);
+  -moz-box-shadow: 0px 10px 22px 0px rgba(38, 26, 16, 0.4);
+  box-shadow: 0px 10px 22px 0px rgba(38, 26, 16, 0.4);
+  font-size: 3em;
 }
 body.admin {
   background-color: dimgray;
@@ -1890,4 +1995,11 @@ body.admin h1 {
 }
 body.admin h2 {
   font-size: 1.5em;
+}
+body.admin li {
+  display: flex;
+}
+body.admin li span {
+  flex: 1;
+  text-align: left;
 }

@@ -8,10 +8,14 @@
 }
 
 body{
+	display: flex;
+	
+	font-family: SpiceFamily;
 	overflow-y: scroll;
-	section, div, header, li, ul{
-		box-sizing: border-box;
-		border: 1px solid black;
+	
+	#MainContainer{
+		.background-color();
+		flex:1;
 	}
 	
 	section.user-section{
@@ -25,6 +29,12 @@ body{
 			height:@headHeight;
 			margin-bottom: @layoutUnitStandard;
 		}
+		header{
+			img{
+				height: 100%;
+				.box-shadow-01();
+			}
+		}
 		.inventory{
 			flex:1;
 			overflow-y:scroll;
@@ -36,6 +46,13 @@ body{
 	}
 }
 
+.inventory, .table{
+	position: relative;
+	border-top: 0.3em solid @paletteColor01;
+	background-color: @paletteColor03;
+	list-style-type: none !important;
+}
+
 #Trade{
 	position: relative;
 }
@@ -43,4 +60,79 @@ body{
 #TradeButton{
 	border-radius: 1.5rem;
 	width: 100%;
+}
+
+#Friends{
+	width: 4em;
+	background-color: @paletteColor02;
+	li{
+		cursor: pointer;
+		padding: @layoutUnit5;
+		img{
+			width: 100%;
+			.box-shadow-02();
+		}
+		&.active{
+			background-color: @paletteColor04;
+			cursor:default;
+		}
+	}
+}
+
+li.inventory-item, li.trade{
+	overflow: hidden;
+	
+	button{float: right;}
+	
+	cursor: default;
+	border: 2px solid @paletteColor03;
+	padding: @layoutUnit5;
+	background-color: @paletteColor02;
+	
+	list-style-type: none !important;
+	img{
+		height: 100%;
+		float:right;
+	}
+}
+
+li.inventory-item{
+	height:4em;
+	cursor: move;
+}
+
+button{
+	padding: @layoutUnit5;
+	cursor: pointer;
+	font-family: inherit;
+	color: inherit;
+	
+	border: none;
+	
+	
+	-webkit-box-shadow: 0px 3px 6px 0px rgba(38,26,16,0.4);
+	-moz-box-shadow: 0px 3px 6px 0px rgba(38,26,16,0.4);
+	box-shadow: 0px 3px 6px 0px rgba(38,26,16,0.4);
+	
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fceec7+0,e3c79b+100 */
+	background: #fceec7; /* Old browsers */
+	background: -moz-linear-gradient(top, #fceec7 0%, #e3c79b 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, #fceec7 0%,#e3c79b 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, #fceec7 0%,#e3c79b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceec7', endColorstr='#e3c79b',GradientType=0 ); /* IE6-9 */
+	&:active{
+		background: @paletteColor04;
+	}
+	&.disabled, &disabled:active{
+		cursor: default;
+		background: #e3c79b;
+		color: @paletteColor03;
+	}
+}
+#TradeButton{
+	
+	-webkit-box-shadow: 0px 10px 22px 0px rgba(38,26,16,0.4);
+	-moz-box-shadow: 0px 10px 22px 0px rgba(38,26,16,0.4);
+	box-shadow: 0px 10px 22px 0px rgba(38,26,16,0.4);
+	font-size: 3em;
 }

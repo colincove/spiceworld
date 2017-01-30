@@ -13,21 +13,23 @@
 		<link rel="stylesheet" href="{{plugins}}../css/dragula.min.css" />
 		
 	</head>
-	<body class="flex-row">
-		<script src="{{plugins}}../js/dragula.min.js"></script>
-		<script src="{{plugins}}../js/script.js" ></script>
-		{% set vars = {'sectionId': 'User'} %}
-		{% include ['templates/user_section.twig'] with vars %}
-		<section id="Trade" class="col-2of7 margined trade-section">
-			<header>
-			</header>
-			<button id="TradeButton">Send Trade</button>
-			<ul class="inventory trades">
-			</ul>
-		</section>
-		{% set vars = {'sectionId': 'Friend'} %}
-		{% include ['templates/user_section.twig'] with vars %}
-		<section id="Friends" class="col-1of7 margined">
-		</section>
+	<body>
+		<article id="MainContainer" class="flex-row">
+			<script src="{{plugins}}../js/dragula.min.js"></script>
+			<script src="{{plugins}}../js/script.js" ></script>
+			{% set vars = {'sectionId': 'User'} %}
+			{% include ['templates/user_section.twig'] with vars %}
+			<section id="Trade" class="col-2of6 margined trade-section">
+				<header>
+				</header>
+				<button id="TradeButton">Send Trade</button>
+				<ul id="Trades" class="inventory">
+				</ul>
+			</section>
+			{% set vars = {'sectionId': 'Friend'} %}
+			{% include ['templates/user_section.twig'] with vars %}
+		</article>
+		<ol id="Friends">
+		</ol>
 	</body>
 </html>
